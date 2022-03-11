@@ -1,0 +1,56 @@
+/*
+* Licensed Materials - Property of IBM
+* 5724-Q36
+* (c) Copyright IBM Corp. 2020
+* US Government Users Restricted Rights - Use, duplication or disclosure
+* restricted by GSA ADP Schedule Contract with IBM Corp.
+*/
+import { useCallback } from 'react';
+import debounce from 'lodash/debounce';
+import useParentDimensions from './useParentDimensions';
+import useResizeTable from './useResizeTable';
+
+const useInfiniteScroll = (hooks) => {
+
+  useParentDimensions(hooks);
+  useResizeTable(hooks);
+
+  const useInstance = (instance) => {
+    const {
+      isFetching,
+      tableHeight,
+      innerListRef,
+      fetchMoreData,
+    } = instance;
+
+    const loadMoreThreshold = 200;
+
+    const emptyFechData = () => {};
+    const fetchMore = useCallback(debounce(fetchMoreData || emptyFechData, 3000, { leading: true, trailing: false }), [fetchMoreData]);
+    const onScroll = ({
+      scrollDirection,
+      scrollOffset,
+    }) => {
+      if (innerListRef && innerListRef.current) {
+        if (!isFetching && scrollDirection === 'forward'
+          && scrollOffset + tableHeight >= innerListRef.current.clientHeight - loadMoreThreshold) {
+          if (fetchMoreData) {
+            fetchMore();
+          }
+        }
+      }
+    };
+
+    Object.assign(
+      instance,
+      {
+        onScroll,
+        withVirtualScroll: true,
+      }
+    );
+  };
+
+  hooks.useInstance.push(useInstance);
+};
+
+export default useInfiniteScroll;
