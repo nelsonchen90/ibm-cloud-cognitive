@@ -7,8 +7,8 @@
  * restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
-import { PropTypes } from 'carbon-components-react';
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import CustomizeColumnsModal from './CustomizeColumnsModal';
 
 const ModalWrapper = ({ instance }) => {

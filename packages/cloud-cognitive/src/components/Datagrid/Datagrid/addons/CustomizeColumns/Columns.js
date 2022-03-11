@@ -8,9 +8,10 @@
 */
 
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { Checkbox, PropTypes } from 'carbon-components-react';
+import { Checkbox } from 'carbon-components-react';
 import update from 'immutability-helper';
 import DraggableElement from '../../DraggableElement';
 import { isColumnVisible } from './common';

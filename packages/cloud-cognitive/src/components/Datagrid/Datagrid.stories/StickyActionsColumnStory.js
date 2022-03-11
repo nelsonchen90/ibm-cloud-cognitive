@@ -23,13 +23,14 @@ const StickyActionsColumn = () => {
   );
   const [data, setData] = useState([]);
   const [msg, setMsg] = useState("click action menu");
-  const onActionClick = (actionId, row, event) => {
+  const onActionClick = (actionId, row) => {
     const { original } = row;
     setMsg(
       `Clicked [${actionId}] on row: <${original.firstName} ${original.lastName}>`
     );
   };
   const [isFetching, setIsFetching] = useState(true);
+
   const fetchData = () => new Promise((resolve) => {
     setIsFetching(true);
     setTimeout(() => {
@@ -37,9 +38,11 @@ const StickyActionsColumn = () => {
       resolve();
     }, 1000);
   }).then(() => setIsFetching(false) );
+
   useEffect(() => {
     fetchData();
   }, []);
+
   const datagridState = useDatagrid(
     {
       columns,

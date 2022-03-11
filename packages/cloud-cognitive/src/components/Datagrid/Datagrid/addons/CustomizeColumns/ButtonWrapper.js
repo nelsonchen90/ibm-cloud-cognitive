@@ -8,8 +8,9 @@
  */
 
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { Column16 } from '@carbon/icons-react';
-import { Button, PropTypes } from 'carbon-components-react';
+import { Button } from 'carbon-components-react';
 
 const ButtonWrapper = ({
   onClick,
