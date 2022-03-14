@@ -1,0 +1,67 @@
+//
+// Copyright IBM Corp. 2022, 2022
+//
+// This source code is licensed under the Apache-2.0 license found in the
+// LICENSE file in the root directory of this source tree.
+//
+
+// Standard imports.
+@import '../../global/styles/project-settings';
+@import '../../global/styles/mixins';
+
+// Other Carbon settings.
+// TODO: @import 'carbon-components/scss/globals/grid/grid'; if needed
+
+// Datagrid uses the following Carbon components:
+// TODO: @import(s) of Carbon component styles used by Datagrid
+
+// Datagrid uses the following Carbon for IBM Products components:
+// TODO: @import(s) of IBM Products component styles used by Datagrid
+
+// Define all component styles in a mixin which is then exported using
+// the Carbon import-once mechanism.
+@mixin datagrid {
+  // The block part of our conventional BEM class names (blockClass__E--M).
+  $block-class: #{$pkg-prefix}--datagrid;
+
+  .#{$block-class}__datagridWrap {
+    display: block;
+    width: 100%;
+    :global(.bx--checkbox) {
+      display: none;
+    }
+  }
+
+  .#{$block-class}__datagridWrap-simple {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  
+    :global {
+      .bx--pagination {
+        // newer version of carbon pagination has scroll which doesn't make any sense, removing it
+        overflow-x: unset;
+      }
+    }
+  }
+
+  .#{$block-class} {
+    // TODO: Styles.
+    @import './styles/datagrid';
+    @import './styles/useNestedRows';
+    //@import './styles/useNestedTable';
+    @import './styles/useSortableColumns';
+    @import './styles/useColumnRightAlign';
+    @import './styles/useStickyColumn.scss';
+    @import './styles/useActionsColumn.scss';
+    @import './styles/addons/CustomizeColumnsModal.scss';
+    @import './styles/addons/RowSizeDropdown.scss';
+    @import './styles/useSelectAllToggle.scss';
+  }
+}
+
+@include exports('datagrid') {
+  @include datagrid;
+}

@@ -1,0 +1,306 @@
+/*
+* Licensed Materials - Property of IBM
+* 5724-Q36
+* (c) Copyright IBM Corp. 2020 - 2021
+* US Government Users Restricted Rights - Use, duplication or disclosure
+* restricted by GSA ADP Schedule Contract with IBM Corp.
+*/
+
+.datagrid-table-toolbar {
+  > section {
+    overflow: visible; // RowSizeDopdown depend on this
+    z-index: 2;
+  }
+}
+
+.datagrid-full-height {
+  height: 100%;
+  table, tbody {
+    height: 100%;
+  }
+}
+
+.datagrid {
+  overflow: auto;
+  display: block;
+  width: 100%;
+  padding-top: 0;
+
+  .bx--data-table-content {
+    overflow-x: unset;
+    width: 100%;
+    height: 100%;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $text-03;
+  }
+  table {
+    /* Removes additional scroll introduced by Carbon table */
+    overflow: hidden;
+    &.vertical-align-center {
+      .datagrid-head {
+        .bx--table-header-label {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          color: $text-01;
+        }
+      }
+
+      .cell {
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: center;
+      }
+
+      td.bx--table-column-checkbox,
+      th.bx--table-column-checkbox {
+        padding-top: 0.6875rem;
+        &.datagrid-checkbox-cell {
+          display: flex;
+          align-items: center;
+          padding-top: 0;
+        }
+      }
+      .datagrid-checkbox-cell {
+        th.bx--table-column-checkbox {
+          display: flex;
+          align-items: center;
+          padding-top: 0;
+          height: 100%;
+        }
+      }
+      &.variable-row-height {
+        &.bx--data-table--compact,
+        &.bx--data-table--xs {
+          .cell {
+            padding-top: rem(2px);
+            padding-bottom: rem(2px);
+          }
+        }
+        &.bx--data-table--short,
+        &.bx--data-table--sm,
+        &.bx--data-table--md {
+          .cell {
+            padding-top: rem(7px);
+            padding-bottom: rem(6px);
+          }
+        }
+        &.bx--data-table--tall,
+        &.bx--data-table--lg,
+        &.bx--data-table--xl {
+          .cell {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+          }
+        }
+      }
+    }
+    &.vertical-align-top {
+      &.bx--data-table--tall,
+      &.bx--data-table--lg,
+      &.bx--data-table--xl {
+        .cell {
+          padding-top: 1rem;
+        }
+        .bx--table-header-label {
+          padding-top: $spacing-05;
+        }
+        .bx--table-column-checkbox {
+          padding-top: rem(13px);
+        }
+      }
+      &.variable-row-height {
+        &.bx--data-table--tall,
+        &.bx--data-table--lg,
+        &.bx--data-table--xl {
+          .cell {
+            padding-bottom: 1rem;
+          }
+          .bx--table-header-label {
+            padding-bottom: $spacing-05;
+          }
+        }
+      }
+    }
+    &.variable-row-height {
+      tr.datagrid-carbon-row {
+        height: auto;
+      }
+    }
+  }
+  .datagrid-table-simple {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    overflow: hidden;
+  }
+
+  .datagrid-with-pagination {
+    tr:last-of-type > td {
+      border-bottom: none;
+    }
+  }
+
+  .datagrid-head {
+    display: flex;
+    .header {
+      align-items: center;
+      /* Each cell should grow equally */
+      width: 1%;
+    }
+  }
+
+  .datagrid-empty-state-body {
+    display: flex;
+    width: 100%;
+  }
+
+  .datagrid-virtual-scrollbar {
+    //makes thin scrollbar in chrome and firefox
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: $ui-background;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $text-03;
+    }
+  }
+
+  .cell {
+    display: flex;
+    /* Each cell should grow equally */
+    width: 1%;
+  }
+
+  .defaultStringRenderer {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .datagrid-expanded-row {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .datagrid-carbon-row {
+    flex: unset !important;
+    &:hover {
+      a {
+        color: $hover-primary-text !important;
+      }
+    }
+  }
+
+  .bx--select-input {
+    -webkit-appearance: none; // could be fixed by post-css plugin
+  }
+
+  th.bx--table-column-checkbox {
+    display: block;
+  }
+
+  td.bx--table-column-checkbox,
+  th.bx--table-column-checkbox {
+    padding-right: $spacing-06 !important;
+  }
+}
+
+.resizer {
+  display: inline-block;
+  width: $spacing-02;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(50%);
+  z-index: 1;
+  touch-action:none;
+  background: transparent;
+
+  &:hover {
+    background: transparent;
+  }
+};
+
+.sortableColumn:hover {
+  background-color: $hover-selected-ui;
+}
+.resizableColumn {
+  &:hover {
+    background-color: $hover-selected-ui;
+    .resizer {
+      background-color: $hover-selected-ui;
+      border-right: $spacing-01 solid $ui-04;
+    }
+  }
+  &.isResizing {
+    .resizer {
+      border-right: $spacing-01 solid $hover-secondary;
+    }
+  }
+  &.isSorted {
+    background-color: $hover-selected-ui;
+  }
+}
+
+.datagrid-head-hidden-select-all {
+  padding-right: $spacing-08;
+}
+
+.datagrid-simple-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  //makes thin scrollbar in chrome and firefox
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: $ui-background;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $text-03;
+  }
+}
+
+.sticky.datagrid-table-simple {
+  min-width: 0 !important;
+}
+
+.sticky.datagrid-simple-body {
+  overflow: auto;
+}
+
+.sticky.datagrid-table-simple thead > div {
+  width: 100% !important;
+  overflow: hidden;
+}
+
+.displayFlex {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+}
+
+.datagridLeftPanel {
+  width: 388px; // as per UX specs.
+  background-color: $ui-01;
+  height: 100%;
+  display: flex;
+}
+
+.datagridWithPanel {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  width: 100%;
+  position: relative;
+}

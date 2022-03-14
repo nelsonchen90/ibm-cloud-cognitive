@@ -1,0 +1,22 @@
+/*
+* Licensed Materials - Property of IBM
+* 5724-Q36
+* (c) Copyright IBM Corp. 2021
+* US Government Users Restricted Rights - Use, duplication or disclosure
+* restricted by GSA ADP Schedule Contract with IBM Corp.
+*/
+
+.datagrid-actions-column-cell {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.datagrid-actions-column-content {
+  display: flex;
+  justify-content: center;
+}
+
+.datagrid-actions-column-loading {
+  margin-bottom: $spacing-03;
+}

@@ -1,0 +1,33 @@
+/*
+* Licensed Materials - Property of IBM
+* 5724-Q36
+* (c) Copyright IBM Corp. 2020
+* US Government Users Restricted Rights - Use, duplication or disclosure
+* restricted by GSA ADP Schedule Contract with IBM Corp.
+*/
+// used for tables within a expandable row
+.datagrid-expanded-row .bx--data-table-container {
+  width: calc(100% - #{$layout-03});
+  margin-left: $layout-03;
+  overflow-x: hidden;
+  border-left: 2px solid $interactive-01;
+
+  th {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: $ui-03;
+    border-top-color: $ui-03;
+  }
+
+  tr.carbon-nested-row {
+    border-left: none;
+  }
+}
+// helper class for the nested table
+.carbon-nested-table {
+  border-bottom: 1px solid $ui-03;
+
+  .datagrid-virtual-scrollbar > div > div:last-child td {
+    border-bottom: none;
+  }
+}

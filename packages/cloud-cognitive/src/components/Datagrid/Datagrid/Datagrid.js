@@ -12,6 +12,12 @@ import DatagridHead from './DatagridHead';
 import DatagridBody from './DatagridBody';
 import DatagridToolbar from './DatagridToolbar';
 
+import { getDevtoolsProps } from '../../../global/js/utils/devtools';
+import { pkg } from '../../../settings';
+
+const blockClass = `${pkg.prefix}--datagrid`;
+const componentName = 'Datagrid';
+
 const {
   TableContainer,
   Table,
@@ -57,7 +63,12 @@ const Datagrid = (datagridState) => {
   );
 
   return (
-    <div id={tableId} ref={rootRef} className={withVirtualScroll ? 'datagridWrap' : 'datagridWrap-simple'}>
+    <div
+      id={tableId}
+      ref={rootRef}
+      className={withVirtualScroll ? `${blockClass} ${blockClass}__datagridWrap` : `${blockClass} ${blockClass}__datagridWrap-simple`}
+      {...getDevtoolsProps(componentName)}
+    >
       <DatagridToolbar {...datagridState} />
       { leftPanel
       && (

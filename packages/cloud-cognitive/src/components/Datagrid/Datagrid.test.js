@@ -13,7 +13,7 @@ import uuidv4 from '../../global/js/utils/uuidv4';
 
 import { Datagrid } from '.';
 
-const blockClass = `${pkg.prefix}--data-grid`;
+const blockClass = `${pkg.prefix}--datagrid`;
 const componentName = Datagrid.displayName;
 
 // values to use

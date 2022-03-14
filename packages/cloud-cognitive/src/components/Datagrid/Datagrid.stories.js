@@ -43,6 +43,11 @@ export default {
   },
 };
 
+const Wrapper = ({children}) =>
+  <div style={{ height: '100vh', width: '100%', padding: '1rem', margin: '0', zIndex: '0' }}>
+    { children }
+  </div>;
+
 const range = (len) => {
   const arr = [];
   for (let i = 0; i < len; i++) {
@@ -242,7 +247,11 @@ export const InfiteScroll = () => {
     useInfiniteScroll,
   );
 
-  return <Datagrid {...datagridState} />;
+  return (
+    <Wrapper>
+      <Datagrid {...datagridState} />;
+    </Wrapper>
+  );
 };
 
 export const TenTousendEntries = () => {
@@ -695,7 +704,11 @@ export const RowSizeDropdown = () => {
     useSelectRows,
   );
 
-  return <Datagrid {...datagridState} />;
+  return (
+    <Wrapper>
+      <Datagrid {...datagridState} />
+    </Wrapper>
+  );
 };
 RowSizeDropdown.story = RowSizeDropdownStory;
 
@@ -716,7 +729,11 @@ export const LeftPanel = () => {
     },
   );
 
-  return <Datagrid {...datagridState} />;
+  return (
+    <Wrapper>
+      <Datagrid {...datagridState} />
+    </Wrapper>
+  );
 };
 LeftPanel.story = LeftPanelStory;
 

@@ -1,0 +1,47 @@
+/*
+* Licensed Materials - Property of IBM
+* 5724-Q36
+* (c) Copyright IBM Corp. 2020
+* US Government Users Restricted Rights - Use, duplication or disclosure
+* restricted by GSA ADP Schedule Contract with IBM Corp.
+*/
+
+.sortableColumn {
+  .bx--table-header-label {
+    display: block;
+    height: 100%;
+    width: 100%;
+    .header-title {
+      display: inline-block;
+      width: auto;
+    }
+    button {
+      color: $text-01 !important;
+      background: none !important;
+      padding: 0;
+      font: inherit;
+      min-height: 0;
+      border: none;
+      width: 100%;
+      min-width: 100%;
+      box-shadow: none;
+
+      svg {
+        fill: $text-01;
+        visibility: hidden;
+      }
+    }
+    button:focus, button:active,
+    button:focus svg {
+      outline: none !important;
+      color: $text-01 !important;
+      background: none !important;
+    }
+  }
+}
+
+.sortableColumn:hover, .sortableColumn.isSorted {
+  .bx--table-header-label svg {
+    visibility: visible;
+  }
+}

@@ -1,0 +1,33 @@
+/*
+* Licensed Materials - Property of IBM
+* 5724-Q36
+* (c) Copyright IBM Corp. 2021
+* US Government Users Restricted Rights - Use, duplication or disclosure
+* restricted by GSA ADP Schedule Contract with IBM Corp.
+*/
+
+.datagrid-right-sticky-column-cell {
+  position: sticky !important;
+  right: 0;
+  box-shadow: -2px 1px 3px $overlay-01;
+}
+
+.datagrid-right-sticky-column-header {
+  position: sticky !important;
+  right: 0;
+  box-shadow: -2px 1px 3px $overlay-01;
+}
+
+.sticky-noShadow {
+  box-shadow: none;
+}
+
+.sticky-column-noShadow {
+  .datagrid-right-sticky-column-cell {
+    box-shadow: none;
+  }
+}
+
+.datagrid-right-sticky-column-offset-scroll {
+  right: 6px !important; // offset the vertical scroll bar in the table body
+}
